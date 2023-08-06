@@ -1,0 +1,54 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>registration</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">registration</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscription</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="full">
+    <ion-label position="floating">Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="nom" name="nom" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Prénom</ion-label>
+    <ion-input type="text" [(ngModel)]="prenom" name="prenom"></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Date de naissance</ion-label>
+    <ion-input type="date" [(ngModel)]="dateNaissance" name="dateNaissance" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Adresse email</ion-label>
+    <ion-input type="text" [(ngModel)]="email" name="email" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Confirmation du mot de passe</ion-label>
+    <ion-input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button type="submit" color="danger" expand="block" (click)="register()">S'inscrire</ion-button>
+    </ion-col>
+  </ion-row>
+  {{ message }}
+</ion-content>

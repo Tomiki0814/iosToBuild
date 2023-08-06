@@ -1,0 +1,58 @@
+<!-- menu -->
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <!-- connexion -->
+    <ion-item-divider>
+      <ion-icon name="home"></ion-icon>
+      <span [routerLink]="['/']">{{'&nbsp;&nbsp;&nbsp;'}}Home</span>
+    </ion-item-divider>
+    <ion-item-divider>
+      <ion-icon name="wifi"></ion-icon>
+      <span (click)="connexionButtonAction()">{{'&nbsp;&nbsp;&nbsp;'}}{{connexionButtonLabel}}</span>
+    </ion-item-divider>
+    <ion-item-divider>
+      <ion-icon name="add"></ion-icon>
+      <span [routerLink]="['/paper-request']">{{'&nbsp;&nbsp;&nbsp;'}}Faire une demande</span>
+    </ion-item-divider>
+    <ion-item-divider>
+      <ion-icon name="save"></ion-icon>
+      <span [routerLink]="['/paper-request-history']">{{'&nbsp;&nbsp;&nbsp;'}}Historique</span>
+    </ion-item-divider>
+    <!-- connexion -->
+  </ion-content>
+</ion-menu>
+<!-- menu -->
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>e-gouvernance</ion-title>
+      <ion-buttons slot="end">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <!-- content -->
+  <ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-header collapse="condense">
+      <ion-toolbar>
+        <ion-title size="large">
+          e-gouvernance
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-list>
+      <app-new *ngFor="let new of news" [new]="new"></app-new>
+    </ion-list>
+  </ion-content>
+  <!-- content -->
+</div>

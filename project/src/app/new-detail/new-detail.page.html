@@ -1,0 +1,43 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>new-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">new-detail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Inbox'" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="new">
+  <ion-item>
+    <ion-icon aria-hidden="true" name="person-circle" color="primary"></ion-icon>
+    <ion-label class="ion-text-wrap">
+      <h2>
+        {{ new.titre }}
+        <span class="date">
+          <ion-note>{{ new.titre }}</ion-note>
+        </span>
+      </h2>
+      <h3>To: <ion-note>Me</ion-note></h3>
+    </ion-label>
+  </ion-item>
+
+  <div class="ion-padding">
+    <h1>{{ new.titre }}</h1>
+    <p>
+      <quill-editor [readOnly]="true" [modules]="{toolbar : false}" [ngModel]="new.paragraphes"></quill-editor>
+    </p>
+  </div>
+</ion-content>

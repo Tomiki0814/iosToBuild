@@ -1,0 +1,13 @@
+<ion-item *ngIf="paperRequestHistoryItem" [detail]="false">
+  <div slot="start" [class]="!(paperRequestHistoryItem.statut === '1') ? 'dot dot-unread' : 'dot'"></div>
+  <ion-label class="ion-text-wrap">
+    <h2>
+      {{ paperRequestHistoryItem.papierType }}
+      <span class="date">
+        <ion-note>Demandé le : {{ paperRequestHistoryItem.dateDemande }}</ion-note>
+        <ion-icon aria-hidden="true" name="chevron-forward" size="small"></ion-icon>
+      </span>
+    </h2>
+    <h3>Statut : {{ paperRequestHistoryItem.statut }}</h3>
+  </ion-label>
+</ion-item>
