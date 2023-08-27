@@ -37,6 +37,48 @@
     <ion-label position="floating">Adresse email</ion-label>
     <ion-input type="text" [(ngModel)]="email" name="email" required></ion-input>
   </ion-item>
+  <!-- new field -->
+  <ion-item lines="full">
+    <ion-label position="floating">Sexe</ion-label>
+    <ion-select placeholder="Sélectionner votre sexe" [(ngModel)]="sexe" name="sexe" required>
+      <ion-select-option value="M">Masculin</ion-select-option>
+      <ion-select-option value="F">Féminin</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Adresse</ion-label>
+    <ion-input type="text" [(ngModel)]="adresse" name="adresse" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Téléphone</ion-label>
+    <ion-input type="text" [(ngModel)]="telephone" name="telephone" required></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">CIN</ion-label>
+    <ion-input type="text" [(ngModel)]="cin" name="cin" required></ion-input>
+  </ion-item>
+  <!--  -->
+  <ion-item lines="full">
+    <ion-label position="floating">Région</ion-label>
+    <ion-select placeholder="Sélectionner votre région" [(ngModel)]="idRegion" name="idRegion"
+      (ionChange)="handleChangeRegion()" required>
+      <ion-select-option *ngFor="let region of regions" [value]="region.id">{{region.nom}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">District</ion-label>
+    <ion-select placeholder="Sélectionner votre district" [(ngModel)]="idDistrict" name="idDistrict"
+      (ionChange)="handleChangeDistrict()" required>
+      <ion-select-option *ngFor="let district of districts" [value]="district.id">{{district.nom}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Commune</ion-label>
+    <ion-select placeholder="Sélectionner votre commune" [(ngModel)]="idCommune" name="idCommune" required>
+      <ion-select-option *ngFor="let commune of communes" [value]="commune.id">{{commune.nom}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <!-- new field -->
   <ion-item lines="full">
     <ion-label position="floating">Mot de passe</ion-label>
     <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>

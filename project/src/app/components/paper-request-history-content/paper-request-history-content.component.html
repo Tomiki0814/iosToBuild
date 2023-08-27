@@ -1,13 +1,15 @@
-<ion-item *ngIf="paperRequestHistoryItem" [detail]="false">
-  <div slot="start" [class]="!(paperRequestHistoryItem.statut === '1') ? 'dot dot-unread' : 'dot'"></div>
+<ion-item
+  [routerLink]="paperRequestHistoryItem.statut === 20 ? '/qrcode-paper/' + paperRequestHistoryItem.id : '/paper-request-history'"
+  *ngIf="paperRequestHistoryItem" [detail]="false">
+  <div slot="start" [class]="!(paperRequestHistoryItem.statut === 1) ? 'dot dot-unread' : 'dot'"></div>
   <ion-label class="ion-text-wrap">
     <h2>
-      {{ paperRequestHistoryItem.papierType }}
+      {{ paperRequestHistoryItem.papier }}
       <span class="date">
         <ion-note>Demandé le : {{ paperRequestHistoryItem.dateDemande }}</ion-note>
         <ion-icon aria-hidden="true" name="chevron-forward" size="small"></ion-icon>
       </span>
     </h2>
-    <h3>Statut : {{ paperRequestHistoryItem.statut }}</h3>
+    <h3>Statut : {{ paperRequestHistoryItem.statutLibelle }}</h3>
   </ion-label>
 </ion-item>
