@@ -11,17 +11,21 @@
       <ion-icon name="home"></ion-icon>
       <span [routerLink]="['/']">{{'&nbsp;&nbsp;&nbsp;'}}Home</span>
     </ion-item-divider>
-    <ion-item-divider>
-      <ion-icon name="wifi"></ion-icon>
-      <span (click)="connexionButtonAction()">{{'&nbsp;&nbsp;&nbsp;'}}{{connexionButtonLabel}}</span>
-    </ion-item-divider>
-    <ion-item-divider>
+    <ion-item-divider *ngIf="isConnected">
       <ion-icon name="add"></ion-icon>
       <span [routerLink]="['/paper-request']">{{'&nbsp;&nbsp;&nbsp;'}}Faire une demande</span>
     </ion-item-divider>
-    <ion-item-divider>
+    <ion-item-divider *ngIf="isConnected">
       <ion-icon name="save"></ion-icon>
       <span [routerLink]="['/paper-request-history']">{{'&nbsp;&nbsp;&nbsp;'}}Historique</span>
+    </ion-item-divider>
+    <ion-item-divider *ngIf="!isConnected">
+      <ion-icon name="wifi"></ion-icon>
+      <span [routerLink]="['/se-connecter']">{{'&nbsp;&nbsp;&nbsp;'}}Se connecter</span>
+    </ion-item-divider>
+    <ion-item-divider *ngIf="isConnected">
+      <ion-icon name="wifi"></ion-icon>
+      <span (click)="logout()">{{'&nbsp;&nbsp;&nbsp;'}}Se déconnecter</span>
     </ion-item-divider>
     <!-- connexion -->
   </ion-content>
@@ -30,7 +34,7 @@
 <div class="ion-page" id="main-content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>e-gouvernance</ion-title>
+      <ion-title>Digital paper</ion-title>
       <ion-buttons slot="end">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
@@ -45,11 +49,13 @@
     <ion-header collapse="condense">
       <ion-toolbar>
         <ion-title size="large">
-          e-gouvernance
+          Digital paper
         </ion-title>
       </ion-toolbar>
     </ion-header>
-
+    <!-- loader -->
+    <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
+    <!-- loader -->
     <ion-list>
       <app-new *ngFor="let new of news" [new]="new"></app-new>
     </ion-list>

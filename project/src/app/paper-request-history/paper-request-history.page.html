@@ -21,6 +21,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <!-- loader -->
+  <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
+  <!-- loader -->
   <app-paper-request-history-content *ngFor="let paperRequestHistoryItem of paperRequestHistory"
     [paperRequestHistoryItem]="paperRequestHistoryItem"></app-paper-request-history-content>
 </ion-content>

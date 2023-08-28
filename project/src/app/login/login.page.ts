@@ -26,14 +26,13 @@ export class LoginPage implements OnInit {
 
     const success = (response: any) => {
       this.message = "Ok";
-      console.log("Response data ===> ", response);
-      userConnected.id = response["id"];
-      userConnected.token = response["token"];
+      /*userConnected.id = response["id"];
+      userConnected.token = response["jwttoken"];
       userConnected.nom = response["nom"];
       userConnected.prenom = response["prenom"];
-      userConnected.email = response["email"];
-
-      localStorage.setItem("token", response["token"]);
+      userConnected.email = response["email"];*/
+      userConnected.token = response["jwttoken"];
+      localStorage.setItem("token", response["jwttoken"]);
 
       this.email = "";
       this.password = "";
@@ -45,7 +44,6 @@ export class LoginPage implements OnInit {
     }
 
     try {
-      console.log("login")
       this.userService.login(input).subscribe(success, error);
     } catch (err) {
       this.message = err;

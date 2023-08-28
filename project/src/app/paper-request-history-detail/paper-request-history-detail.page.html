@@ -1,0 +1,28 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>paper-request-history-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">paper-request-history-detail</ion-title>
+    </ion-toolbar>
+  </ion-header>
+</ion-content> -->
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Inbox'" defaultHref="/paper-request-history"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="image-container">
+    <img [src]="safeImageData" alt="Base64 Image">
+  </div>
+  <p>Scannez moi!</p>
+</ion-content>

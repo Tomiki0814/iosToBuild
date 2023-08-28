@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
 import { userConnected } from 'src/environments/environment';
+import { Region } from '../models/region.model';
+import { District } from '../models/district.model';
+import { Commune } from '../models/commune.model';
 
 @Component({
   selector: 'app-registration',
@@ -16,12 +19,83 @@ export class RegistrationPage implements OnInit {
   email: string = '';
   password: string = '';
   confirmPassword: string = '';
+  // new field
+  idRegion: number = 0;
+  regions: Region[] = [];
+
+  idDistrict: number = 0;
+  districts: District[] = [];
+
+  idCommune: number = 0;
+  communes: Commune[] = [];
+
+  sexe: string = '';
+  adresse: string = '';
+  telephone: string = '034 XX XXX XX'; // atao +261 
+  cin: string = '0000 - 0000 - 0000';
+  // new field
 
   message: any = '';
 
   constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit() {
+    // regions
+    this.userService.getAllRegion().subscribe((data: any) => {
+      data.forEach((item: any) => {
+        this.regions.push({
+          id: item.id,
+          nom: item.nom
+        });
+      });
+    });
+    // 
+    // districts
+    this.userService.getDistrictByIdRegion(11).subscribe((data: any) => {
+      data.forEach((item: any) => {
+        this.districts.push({
+          id: item.id,
+          nom: item.nom
+        });
+      });
+    });
+    // 
+    // communes
+    this.userService.getCommuneByIdDistrict(101).subscribe((data: any) => {
+      data.forEach((item: any) => {
+        this.communes.push({
+          id: item.id,
+          nom: item.nom
+        });
+      });
+    });
+    //
+  }
+
+  // handleChangeRegion 
+  handleChangeRegion() {
+    this.districts = [];
+    this.userService.getDistrictByIdRegion(this.idRegion).subscribe((data: any) => {
+      data.forEach((item: any) => {
+        this.districts.push({
+          id: item.id,
+          nom: item.nom
+        });
+      });
+    });
+  }
+
+  // handleChangeDistrict 
+  handleChangeDistrict() {
+    this.communes = [];
+    this.userService.getCommuneByIdDistrict(this.idDistrict).subscribe((data: any) => {
+      data.forEach((item: any) => {
+        this.communes.push({
+          id: item.id,
+          nom: item.nom
+        });
+      });
+    });
   }
 
   register() {
@@ -31,19 +105,26 @@ export class RegistrationPage implements OnInit {
       dateNaissance: this.dateNaissance,
       email: this.email,
       password: this.password,
-      confirmPassword: this.confirmPassword
+      confirmPassword: this.confirmPassword,
+      // new field
+      sexe: this.sexe,
+      adresse: this.adresse,
+      telephone: this.telephone,
+      cin: this.cin,
+      commune: {
+        id: this.idCommune
+      }
     }
 
     const success = (response: any) => {
-      this.message = "Ok";
-      console.log("Response data ===> ", response);
-      userConnected.id = response["id"];
-      userConnected.token = response["token"];
+      this.message = "";
+      /*userConnected.id = response["id"];
+      userConnected.token = response["jwttoken"];
       userConnected.nom = response["nom"];
       userConnected.prenom = response["prenom"];
-      userConnected.email = response["email"];
+      userConnected.email = response["email"];*/
 
-      localStorage.setItem("token", response["token"]);
+      localStorage.setItem("token", response["jwttoken"]);
 
       this.nom = "";
       this.prenom = "";

@@ -13,7 +13,8 @@ import { userConnected } from 'src/environments/environment';
 })
 export class HomePage {
   news: New[] = [];
-  connexionButtonLabel: string = 'Se connecter';
+  spinner: boolean = true;
+  isConnected: boolean = false;
 
   constructor(private newsService: NewsService, private userService: UserService, private route: Router) { }
 
@@ -25,15 +26,14 @@ export class HomePage {
 
   ngOnInit() {
     // log userConnected
-    console.log("userConnected object ===> ", userConnected)
-    console.log("token ===> ", localStorage.getItem("token"))
-    // 
-    // if (localStorage.getItem("token") !== null) {
-    //   this.connexionButtonLabel = 'Se déconnecter';
-    // }
+
+    if (localStorage.getItem("token") != '') {
+      this.isConnected = true;
+    }
+
     // News
     this.newsService.getNews().subscribe((data: any) => {
-      console.log("News ===> ", data);
+      this.spinner = false;
       data.forEach((item: any) => {
         this.news.push({
           id: item["_id"],
@@ -45,12 +45,8 @@ export class HomePage {
     // 
   }
 
-  connexionButtonAction() {
-    if (this.connexionButtonLabel == 'Se déconnecter') {
-      this.userService.logout();
-      this.connexionButtonLabel = 'Se connecter';
-    } else {
-      this.route.navigateByUrl("/se-connecter");
-    }
+  logout() {
+    localStorage.setItem("token", '');
+    this.route.navigateByUrl("/home");
   }
 }

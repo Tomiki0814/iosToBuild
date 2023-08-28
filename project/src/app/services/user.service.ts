@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { api_url_spring } from 'src/environments/environment';
+import { api_url_springsecurity } from 'src/environments/environment';
 import { ToolsService } from './tools.service';
 import { User } from '../models/user.model';
 
@@ -12,15 +12,28 @@ export class UserService {
 
   register(input: User) {
     const options = this.toolsService.formOption();
-    return this.https.post(api_url_spring + 'register', input, options);
+    return this.https.post(api_url_springsecurity + 'register', input, options);
   }
 
   login(input: any) {
     const options = this.toolsService.formOption();
-    return this.https.post(api_url_spring + 'login', input, options);
+    return this.https.post(api_url_springsecurity + 'login', input, options);
   }
 
-  logout() {
-    localStorage.setItem("token", JSON.stringify(null));
+  // params data
+  getAllRegion() {
+    const options = this.toolsService.formOption();
+    return this.https.get(api_url_springsecurity + 'utils/region', options);
   }
+
+  getDistrictByIdRegion(idRegion: number) {
+    const options = this.toolsService.formOption();
+    return this.https.get(api_url_springsecurity + 'utils/district/' + idRegion, options);
+  }
+
+  getCommuneByIdDistrict(idDistrict: number) {
+    const options = this.toolsService.formOption();
+    return this.https.get(api_url_springsecurity + 'utils/commune/' + idDistrict, options);
+  }
+  // 
 }

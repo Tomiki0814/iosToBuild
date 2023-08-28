@@ -13,12 +13,13 @@ export class PaperRequestPage implements OnInit {
   papier: number = 0;
   message: any = "";
   papersType: PaperType[] = [];
+  spinner: boolean = false;
+
   constructor(private paperRequestService: PaperRequestService, private route: Router) { }
 
   ngOnInit() {
     // Papers
     this.paperRequestService.getPapersType().subscribe((data: any) => {
-      console.log("Papers ===> ", data);
       data.forEach((item: any) => {
         this.papersType.push({
           id: item.id,
@@ -30,32 +31,32 @@ export class PaperRequestPage implements OnInit {
   }
 
   requestPaper() {
+    this.spinner = true;
     // paper request
     const input = {
-      utilisateur: userConnected.id,
-      papier: this.papier
+      id: this.papier
     }
-    console.log("input ==> ", input);
+    
     const success = (response: any) => {
-      this.message = "Ok";
+      this.message = "";
       this.route.navigateByUrl("/paper-request-history");
     }
 
     const error = (response: any) => {
-      this.message = "Server error!";
+      this.message = response["error"]["message"];
     }
 
     try {
-      if (userConnected.id == 0 || this.papier == 0) {
+      if (this.papier == 0) {
         this.message = "Veuillez compléter les informations manquantes";
       } else {
         this.paperRequestService.requestPaper(input).subscribe(success, error);
       }
 
     } catch (err) {
-      this.message = err;
+      this.message = "Exception : " + err;
     } finally {
-
+      this.spinner = false;
     }
     // 
   }
