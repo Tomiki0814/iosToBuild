@@ -1,6 +1,3 @@
-<!-- <ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app> -->
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu side="end" contentId="main-content" type="overlay">
@@ -16,22 +13,6 @@
               <ion-label>{{ p.title }}</ion-label>
             </ion-item>
           </ion-menu-toggle>
-
-          <!-- <ion-menu-toggle auto-hide="false" *ngIf="!isConnected">
-            <ion-item routerDirection="root" [routerLink]="['/se-connecter']" lines="none" detail="false"
-              routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="end" [ios]="'wifi-outline'" [md]="'wifi-sharp'"></ion-icon>
-              <ion-label>Se connecter</ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-
-          <ion-menu-toggle auto-hide="false" *ngIf="isConnected">
-            <ion-item routerDirection="root" (click)="logout()" lines="none" detail="false" routerLinkActive="selected">
-              <ion-icon aria-hidden="true" slot="end" [ios]="'wifi-outline'" [md]="'wifi-sharp'"></ion-icon>
-              <ion-label>Se déconnecter</ion-label>
-            </ion-item>
-          </ion-menu-toggle> -->
-
         </ion-list>
       </ion-content>
     </ion-menu>
