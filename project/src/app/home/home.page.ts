@@ -4,7 +4,6 @@ import { NewsService } from '../services/news.service';
 import { New } from '../models/new.model';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { userConnected } from 'src/environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +24,6 @@ export class HomePage {
   }
 
   ngOnInit() {
-    // log userConnected
 
     if (localStorage.getItem("token") != '') {
       this.isConnected = true;
@@ -45,8 +43,4 @@ export class HomePage {
     // 
   }
 
-  logout() {
-    localStorage.setItem("token", '');
-    this.route.navigateByUrl("/home");
-  }
 }

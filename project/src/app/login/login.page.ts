@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { userConnected } from 'src/environments/environment';
 import { ToolsService } from '../services/tools.service';
 
 @Component({
@@ -26,14 +25,10 @@ export class LoginPage implements OnInit {
 
     const success = (response: any) => {
       this.message = "Ok";
-      /*userConnected.id = response["id"];
-      userConnected.token = response["jwttoken"];
-      userConnected.nom = response["nom"];
-      userConnected.prenom = response["prenom"];
-      userConnected.email = response["email"];*/
-      userConnected.token = response["jwttoken"];
+
       localStorage.setItem("token", response["jwttoken"]);
 
+      localStorage.setItem("user_infos", response["prenom"] + " " + response["nom"]);
       this.email = "";
       this.password = "";
       this.route.navigateByUrl("/home");

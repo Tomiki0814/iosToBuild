@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { userConnected } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'

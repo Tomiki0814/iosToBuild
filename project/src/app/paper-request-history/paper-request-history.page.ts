@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PaperRequestService } from '../services/paper-request.service';
-import { userConnected } from 'src/environments/environment';
 import { PaperRequestHistory } from '../models/paper-request-history.model';
 
 @Component({

@@ -12,7 +12,7 @@
   </ion-header>
 </ion-content> -->
 
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
@@ -34,7 +34,34 @@
     </ion-col>
   </ion-row>
   {{ message }}
-  <!-- loader -->
   <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
-  <!-- loader -->
+</ion-content> -->
+
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Demande d'un papier administratif</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <ion-item lines="full">
+      <ion-label position="floating">Type du papier</ion-label>
+      <ion-select placeholder="Sélectionner un type de papier" [(ngModel)]="papier" name="papier" required>
+        <ion-select-option *ngFor="let paperType of papersType"
+          [value]="paperType.id">{{paperType.type}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" expand="block" (click)="requestPaper()">Demander</ion-button>
+      </ion-col>
+    </ion-row>
+    {{ message }}
+    <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
+  </div>
 </ion-content>

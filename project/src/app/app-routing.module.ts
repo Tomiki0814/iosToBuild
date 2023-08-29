@@ -50,7 +50,11 @@ const routes: Routes = [
   {
     path: 'qrcode-paper/:id',
     loadChildren: () => import('./paper-request-history-detail/paper-request-history-detail.module').then(m => m.PaperRequestHistoryDetailPageModule)
+  },  {
+    path: 'logout',
+    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   },
+
 ];
 
 @NgModule({

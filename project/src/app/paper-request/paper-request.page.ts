@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { PaperRequestService } from '../services/paper-request.service';
 import { Router } from '@angular/router';
 import { PaperType } from '../models/paper-type.model';
-import { userConnected } from 'src/environments/environment';
 
 @Component({
   selector: 'app-paper-request',

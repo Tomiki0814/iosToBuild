@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
-import { userConnected } from 'src/environments/environment';
 import { Region } from '../models/region.model';
 import { District } from '../models/district.model';
 import { Commune } from '../models/commune.model';
@@ -118,13 +117,9 @@ export class RegistrationPage implements OnInit {
 
     const success = (response: any) => {
       this.message = "";
-      /*userConnected.id = response["id"];
-      userConnected.token = response["jwttoken"];
-      userConnected.nom = response["nom"];
-      userConnected.prenom = response["prenom"];
-      userConnected.email = response["email"];*/
 
       localStorage.setItem("token", response["jwttoken"]);
+      localStorage.setItem("user_infos", response["prenom"] + " " + response["nom"]);
 
       this.nom = "";
       this.prenom = "";
@@ -140,7 +135,6 @@ export class RegistrationPage implements OnInit {
     }
 
     try {
-      console.log("input ===> ", input)
       this.userService.register(input).subscribe(success, error);
     } catch (err) {
       this.message = err;
