@@ -1,0 +1,10 @@
+<ion-item *ngIf="feedback" [detail]="false">
+  <ion-label>
+    <h2>
+      {{feedback.commentaire}}
+      <span class="status">
+        <ion-note>{{ feedback.statuslibelle }}</ion-note>
+      </span>
+    </h2>
+  </ion-label>
+</ion-item>

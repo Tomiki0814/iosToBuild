@@ -6,12 +6,17 @@ import { api_url_springsecurity } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class FeedBackService {
+export class NotificationService {
 
   constructor(private https: HttpClient, private toolsService: ToolsService) { }
 
-  getFeedBackMessageList() {
+  getNotificationList() {
     const options = this.toolsService.formOptionWithSecurity();
-    return this.https.get(api_url_springsecurity + 'feedback', options);
+    return this.https.get(api_url_springsecurity + 'notification/list', options);
+  }
+
+  getNotificationCount() {
+    const options = this.toolsService.formOptionWithSecurity();
+    return this.https.get(api_url_springsecurity + 'notification/news', options);
   }
 }

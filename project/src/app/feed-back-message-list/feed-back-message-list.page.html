@@ -1,0 +1,24 @@
+<!-- <ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Vos feed-back</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Vos feed-back</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
+  <ion-list>
+    <app-feed-back-message-list-content *ngFor="let feedback of feedbacks"
+      [feedback]="feedback"></app-feed-back-message-list-content>
+  </ion-list>
+</ion-content>

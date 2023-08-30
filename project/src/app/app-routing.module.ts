@@ -40,19 +40,28 @@ const routes: Routes = [
     loadChildren: () => import('./paper-request/paper-request.module').then(m => m.PaperRequestPageModule)
   },
   {
-    path: 'feed-back',
-    loadChildren: () => import('./feed-back/feed-back.module').then(m => m.FeedBackPageModule)
-  },
-  {
     path: 'paper-request-history',
     loadChildren: () => import('./paper-request-history/paper-request-history.module').then(m => m.PaperRequestHistoryPageModule)
   },
   {
     path: 'qrcode-paper/:id',
     loadChildren: () => import('./paper-request-history-detail/paper-request-history-detail.module').then(m => m.PaperRequestHistoryDetailPageModule)
-  },  {
+  },
+  {
     path: 'logout',
-    loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
+    loadChildren: () => import('./logout/logout.module').then(m => m.LogoutPageModule)
+  },
+  {
+    path: 'notification',
+    loadChildren: () => import('./notification/notification.module').then(m => m.NotificationPageModule)
+  },
+  {
+    path: 'feed-back-message',
+    loadChildren: () => import('./feed-back-message/feed-back-message.module').then(m => m.FeedBackMessagePageModule)
+  },
+  {
+    path: 'feed-back-message-list',
+    loadChildren: () => import('./feed-back-message-list/feed-back-message-list.module').then(m => m.FeedBackMessageListPageModule)
   },
 
 ];

@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { FeedBackPageRoutingModule } from './feed-back-routing.module';
+import { FeedBackMessagePageRoutingModule } from './feed-back-message-routing.module';
 
-import { FeedBackPage } from './feed-back.page';
+import { FeedBackMessagePage } from './feed-back-message.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    FeedBackPageRoutingModule
+    FeedBackMessagePageRoutingModule
   ],
-  declarations: [FeedBackPage]
+  declarations: [FeedBackMessagePage]
 })
-export class FeedBackPageModule {}
+export class FeedBackMessagePageModule {}

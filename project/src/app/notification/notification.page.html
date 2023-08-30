@@ -3,12 +3,13 @@
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Historique des demandes de papiers</ion-title>
+    <ion-title>Notification</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
-  <app-paper-request-history-content *ngFor="let paperRequestHistoryItem of paperRequestHistory"
-    [paperRequestHistoryItem]="paperRequestHistoryItem"></app-paper-request-history-content>
+  <ion-list>
+    <app-notif-content *ngFor="let notification of notifications" [notification]="notification"></app-notif-content>
+  </ion-list>
 </ion-content>
