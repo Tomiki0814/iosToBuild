@@ -12,4 +12,5 @@
   <ion-list>
     <app-notif-content *ngFor="let notification of notifications" [notification]="notification"></app-notif-content>
   </ion-list>
+  <p class="nodata" *ngIf="!spinner && notifications.length === 0">Aucune donnée</p>
 </ion-content>

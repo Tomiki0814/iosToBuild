@@ -14,11 +14,12 @@ import { New } from '../models/new.model';
 export class NewDetailPage implements OnInit {
   private platform = inject(Platform);
   private activatedRoute = inject(ActivatedRoute);
+  spinner: boolean = true;
 
   new: New = {
-    id: '0',
-    titre: 'Pas de nouvel',
-    paragraphes: 'Bonjour, pas de nouvel'
+    id: '',
+    titre: '',
+    paragraphes: ''
   };
   constructor(private newsService: NewsService) { }
 
@@ -26,6 +27,7 @@ export class NewDetailPage implements OnInit {
     // New
     const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.newsService.getNew(id).subscribe((data: any) => {
+      this.spinner = false;
       this.new.id = data["_id"];
       this.new.titre = data["titre"];
       this.new.paragraphes = data["paragraphes"].join("");

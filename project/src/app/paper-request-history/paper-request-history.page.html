@@ -11,4 +11,5 @@
   <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
   <app-paper-request-history-content *ngFor="let paperRequestHistoryItem of paperRequestHistory"
     [paperRequestHistoryItem]="paperRequestHistoryItem"></app-paper-request-history-content>
+  <p class="nodata" *ngIf="!spinner && paperRequestHistory.length === 0">Aucune donnée</p>
 </ion-content>

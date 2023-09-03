@@ -1,11 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-buttons slot="end">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Vos feed-back</ion-title>
-  </ion-toolbar>
-</ion-header> -->
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -21,4 +13,5 @@
     <app-feed-back-message-list-content *ngFor="let feedback of feedbacks"
       [feedback]="feedback"></app-feed-back-message-list-content>
   </ion-list>
+  <p class="nodata" *ngIf="!spinner && feedbacks.length === 0">Aucune donnée</p>
 </ion-content>

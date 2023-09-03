@@ -8,18 +8,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" id="link">
-  <ion-row>
+  <!-- <ion-row>
     <ion-col>
       <a [routerLink]="'/feed-back-message-list'">Liste des feed-back</a>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
   <ion-item lines="full">
     <ion-label position="floating">Votre message</ion-label>
-    <ion-textarea rows="5" [(ngModel)]="text" name="text" required></ion-textarea>
+    <ion-textarea rows="5" [(ngModel)]="commentaire" name="commentaire" required></ion-textarea>
   </ion-item>
   <ion-row>
     <ion-col>
       <ion-button type="submit" expand="block" (click)="send()">Envoyer</ion-button>
     </ion-col>
   </ion-row>
+  <p class="message_text">{{ message }}</p>
+  <ion-spinner *ngIf="spinner" name="dots"></ion-spinner>
 </ion-content>

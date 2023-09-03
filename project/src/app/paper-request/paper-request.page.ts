@@ -35,7 +35,7 @@ export class PaperRequestPage implements OnInit {
     const input = {
       id: this.papier
     }
-    
+
     const success = (response: any) => {
       this.message = "";
       this.route.navigateByUrl("/paper-request-history");
@@ -57,7 +57,6 @@ export class PaperRequestPage implements OnInit {
     } finally {
       this.spinner = false;
     }
-    // 
   }
 
 }

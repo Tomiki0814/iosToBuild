@@ -19,4 +19,9 @@ export class NotificationService {
     const options = this.toolsService.formOptionWithSecurity();
     return this.https.get(api_url_springsecurity + 'notification/news', options);
   }
+  // temp
+  updateStatusNotification() {
+    const options = this.toolsService.formOptionWithSecurity();
+    return this.https.put(api_url_springsecurity + 'notification/', null, options);
+  }
 }

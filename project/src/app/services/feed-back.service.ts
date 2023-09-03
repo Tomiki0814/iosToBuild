@@ -14,4 +14,9 @@ export class FeedBackService {
     const options = this.toolsService.formOptionWithSecurity();
     return this.https.get(api_url_springsecurity + 'feedback', options);
   }
+
+  sendFeedBack(input: any) {
+    const options = this.toolsService.formOptionWithSecurity();
+    return this.https.post(api_url_springsecurity + 'feedback', input, options);
+  }
 }

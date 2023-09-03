@@ -35,6 +35,7 @@ export class RegistrationPage implements OnInit {
   // new field
 
   message: any = '';
+  spinner: boolean = false;
 
   constructor(private userService: UserService, private route: Router) { }
 
@@ -98,6 +99,7 @@ export class RegistrationPage implements OnInit {
   }
 
   register() {
+    this.spinner = true;
     const input = {
       nom: this.nom,
       prenom: this.prenom,
@@ -131,7 +133,7 @@ export class RegistrationPage implements OnInit {
     }
 
     const error = (response: any) => {
-      this.message = response["message"];
+      this.message = response["error"]["message"];
     }
 
     try {
@@ -139,7 +141,7 @@ export class RegistrationPage implements OnInit {
     } catch (err) {
       this.message = err;
     } finally {
-
+      this.spinner = false;
     }
   }
 

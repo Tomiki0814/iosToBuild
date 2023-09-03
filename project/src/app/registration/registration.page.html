@@ -1,17 +1,3 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>registration</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">registration</ion-title>
-    </ion-toolbar>
-  </ion-header>
-</ion-content> -->
-
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
@@ -89,8 +75,9 @@
   </ion-item>
   <ion-row>
     <ion-col>
-      <ion-button type="submit" color="danger" expand="block" (click)="register()">S'inscrire</ion-button>
+      <ion-button type="submit" color="success" expand="block" (click)="register()">S'inscrire</ion-button>
     </ion-col>
   </ion-row>
-  {{ message }}
+  <p class="message_text">{{ message }}</p>
+  <ion-spinner *ngIf="spinner"></ion-spinner>
 </ion-content>

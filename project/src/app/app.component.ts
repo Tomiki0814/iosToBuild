@@ -15,8 +15,8 @@ import { NotificationService } from './services/notification.service';
 export class AppComponent {
   user_infos: any;
   appPages: any = [
-    { title: 'Home', url: '/home', icon: 'home' },
-    { title: 'Se connecter', url: '/se-connecter', icon: 'wifi' },
+    { title: 'Home', url: '/home', icon: 'home', nb: '' },
+    { title: 'Se connecter', url: '/se-connecter', icon: 'wifi', nb: '' },
   ];
   notifCount: any = '';
   constructor(private route: Router, private notificationService: NotificationService) { }
@@ -25,11 +25,13 @@ export class AppComponent {
     this.user_infos = localStorage.getItem("user_infos");
 
     this.route.events.subscribe((val: any) => {
-      //set count of notif
-      this.notificationService.getNotificationCount().subscribe((data: any) => {
-        this.notifCount = data["count"];
-      });
-      //
+      if (localStorage.getItem("token") && localStorage.getItem("token") != '' && localStorage.getItem("token") != null) {
+        //set count of notif
+        this.notificationService.getNotificationCount().subscribe((data: any) => {
+          this.notifCount = data["count"];
+        });
+      }
+
       if (val.url) {
         if (val.url == '/logout') {
           localStorage.setItem("token", '');
@@ -41,17 +43,17 @@ export class AppComponent {
       if (localStorage.getItem("token") && localStorage.getItem("token") != '' && localStorage.getItem("token") != null) {
         // this.isConnected = true;
         this.appPages = [
-          { title: 'Home', url: '/home', icon: 'home' },
-          { title: 'Faire une demande', url: '/paper-request', icon: 'send' },
-          { title: 'Historique', url: '/paper-request-history', icon: 'list' },
-          { title: 'Feed-back', url: '/feed-back-message', icon: 'chatbubble-ellipses' },
-          { title: 'Notification ' + this.notifCount, url: '/notification', icon: 'notifications' },
-          { title: 'Se déconnecter', url: '/logout', icon: 'exit' },
+          { title: 'Home', url: '/home', icon: 'home', nb: '' },
+          { title: 'Faire une demande', url: '/paper-request', icon: 'send', nb: '' },
+          { title: 'Historique', url: '/paper-request-history', icon: 'list', nb: '' },
+          { title: 'Feed-back', url: '/feed-back-message', icon: 'chatbubble-ellipses', nb: '' },
+          { title: 'Notification ', url: '/notification', icon: 'notifications', nb: (this.notifCount == 0 ? '' : this.notifCount) },
+          { title: 'Se déconnecter', url: '/logout', icon: 'exit', nb: '' },
         ];
       } else {
         this.appPages = [
-          { title: 'Home', url: '/home', icon: 'home' },
-          { title: 'Se connecter', url: '/se-connecter', icon: 'log-in' },
+          { title: 'Home', url: '/home', icon: 'home', nb: '' },
+          { title: 'Se connecter', url: '/se-connecter', icon: 'log-in', nb: '' },
         ];
       }
       // }

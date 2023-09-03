@@ -9,15 +9,18 @@ import { ToolsService } from '../services/tools.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  email: any = 'onjampandresenatsiorinanahary@gmail.com';
-  password: any = 'test';
+  email: any = '';
+  password: any = '';
   message: any = '';
+  spinner: boolean = false;
+
   constructor(private userService: UserService, private route: Router) { }
 
   ngOnInit() {
   }
 
   login() {
+    this.spinner = true;
     const input = {
       email: this.email,
       password: this.password
@@ -35,7 +38,7 @@ export class LoginPage implements OnInit {
     }
 
     const error = (response: any) => {
-      this.message = response["message"];
+      this.message = response["error"]["message"];
     }
 
     try {
@@ -43,7 +46,7 @@ export class LoginPage implements OnInit {
     } catch (err) {
       this.message = err;
     } finally {
-
+      this.spinner = false;
     }
   }
 }
